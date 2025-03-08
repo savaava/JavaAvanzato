@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Main {
     public static void main(String[] args) {
         /*
@@ -12,5 +15,15 @@ public class Main {
 
         Forma f = new Forma();
         Triangolo g = new Triangolo();
+
+        /*
+        * Se specifichiamo per i tipi parametrizzati dei limiti come T extends Video ->
+        * possiamo effettivamente usare i metodi di Video o di Object, invece senza non
+        * https://docs.oracle.com/javase/tutorial/java/generics/methods.html
+        * https://docs.oracle.com/javase/tutorial/java/generics/bounded.html
+        * https://docs.oracle.com/javase/tutorial/java/generics/inheritance.html
+        * https://docs.oracle.com/javase/tutorial/java/generics/upperBounded.html
+        * https://docs.oracle.com/javase/tutorial/java/generics/lowerBounded.html
+        * */
     }
 }

@@ -14,7 +14,9 @@ public class Main {
 
 
         int p[] = new int[3];
-        //var p1[]; /* var -> non si può avere più tipi di dati con la C syntax: */
+        //var p1[];
+        /* var -> non si può avere più tipi di dati con la C syntax:
+        noi sappiamo che l'array è una classe */
         var p1 = new int[3];
     }
 }

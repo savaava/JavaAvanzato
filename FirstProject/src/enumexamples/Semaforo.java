@@ -48,6 +48,10 @@ public class Semaforo {
 
         /* keyword var -> assume il tipo di dato in base al ritorno
         * si usa spesso con switch statement */
+        /* A differenza di Object, var deduce il tipo preciso e diventa int o String
+        * in questo caso.
+        * - non possono essere utilizzati come parametri del metodo ad esempio per l'overload
+        * perchè di deve specificare il tipo */
         var s = switch(c){
             case NERO -> 0;
             case ROSSO -> {

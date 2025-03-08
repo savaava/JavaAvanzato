@@ -30,4 +30,9 @@ public enum Colore {
     public String getRGB() {
         return "{"+r+","+g+","+b+"}";
     }
+
+    @Override
+    public String toString(){
+        return getRGB();
+    }
 }
