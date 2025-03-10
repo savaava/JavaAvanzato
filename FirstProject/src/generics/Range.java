@@ -1,8 +1,9 @@
 package generics;
 
+/* quando si definisce un tipo generico con più vincoli (bound multipli), si usa l'operatore extends anche per le interfacce */
 public class Range<T extends Number & Comparable<T>> {
-    private T low;
-    private T high;
+    private final T low;
+    private final T high;
 
     public Range(T low, T high) {
         this.low = low;
