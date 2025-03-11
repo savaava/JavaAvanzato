@@ -37,7 +37,8 @@ public class GenericsExample {
     }
 
     public static void checkNumbersS(Double n, List<? super Double> l) { /* si potrebbe mettere Object, Number o Double */
-        l.add(n);
+        l.add(n); /* l'unico tipo accettabile è quello del limite inferiore o i sottotipi di
+         Double per cui si fa l'upcast a Double o Number o Object */
 
         /* Non va bene perchè dal pov del chiamante si può sempre mettere ad esempio Object
         * quindi non si può fare un downCast */
