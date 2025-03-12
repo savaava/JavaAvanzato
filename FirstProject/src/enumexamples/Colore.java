@@ -8,7 +8,6 @@ public enum Colore {
     GIALLO(255,0,255),
     VERDE(0,255,0);
 
-    /* hanno visibilità di default senza final -> no incapsulamento */
     private final int r,g,b;
 
     Colore(int r, int g, int b) {
@@ -17,22 +16,12 @@ public enum Colore {
         this.b = b;
     }
 
-    public int getR() {
-        return r;
-    }
-    public int getG() {
-        return g;
-    }
-    public int getB() {
-        return b;
-    }
+    public int getR() { return r; }
+    public int getG() { return g; }
+    public int getB() { return b; }
 
-    public String getRGB() {
-        return "{"+r+","+g+","+b+"}";
-    }
+    public String getRGB() { return "{"+r+","+g+","+b+"}"; }
 
     @Override
-    public String toString(){
-        return getRGB();
-    }
+    public String toString(){ return getRGB(); }
 }

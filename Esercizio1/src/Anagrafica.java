@@ -31,23 +31,26 @@ public class Anagrafica {
                 String matricola = scanner.next();
                 String tipoMembro = scanner.next();
 
-                switch(tipoMembro){
+                MembroUnisa membroToAdd = switch(tipoMembro){
                     case "studente" -> {
                         double votoMedio = scanner.nextDouble();
                         CorsoDiStudi corsoDiStudio =CorsoDiStudi.valueOf(scanner.next());
                         Studente studenteToAdd = new Studente(
                                 codiceFiscale, nomeCompleto, matricola, votoMedio, corsoDiStudio
                         );
-                        aOut.aggiuntaMembroUnisa(studenteToAdd);
+                        yield studenteToAdd;
                     }
                     case "docente" -> {
                         String insegnamento = scanner.next();
                         Docente docenteToAdd = new Docente(
                                 codiceFiscale, nomeCompleto, matricola, insegnamento
                         );
-                        aOut.aggiuntaMembroUnisa(docenteToAdd);
+                        yield  docenteToAdd;
                     }
-                }
+                    default -> null;
+                };
+                if(membroToAdd != null)
+                    aOut.aggiuntaMembroUnisa(membroToAdd);
             }
         }
 

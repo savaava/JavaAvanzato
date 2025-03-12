@@ -1,4 +1,4 @@
-public sealed class Forma permits Ellisse, Triangolo {
+public abstract sealed class Forma permits Ellisse, Triangolo {
     /* final -> no extends available */
 
 }
@@ -17,11 +17,11 @@ public sealed class Forma permits Ellisse, Triangolo {
 * - Oppure sealed e quindi mantiene la caratteristica sigillata con permits...
 * - final
 */
-sealed class Triangolo extends Forma permits GG {
+sealed class Triangolo extends Forma permits TriangoloEquilatero {
 
 }
 
-non-sealed class GG extends Triangolo {
+non-sealed class TriangoloEquilatero extends Triangolo {
 
 }
 

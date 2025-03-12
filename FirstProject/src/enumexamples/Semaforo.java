@@ -1,5 +1,7 @@
 package enumexamples;
 
+import static java.lang.System.out;
+
 public class Semaforo {
     Colore c;
 
@@ -11,19 +13,19 @@ public class Semaforo {
         /* costrutto switch classico: */
         switch(c){
             case NERO:
-                System.out.println("Semaforo spento");
+                out.println("Semaforo spento");
                 break;
             case ROSSO:
-                System.out.println("Attenzione non attraversare");
+                out.println("Attenzione non attraversare");
                 break;
             case GIALLO:
-                System.out.println("Liberare in fretta l'incrocio");
+                out.println("Liberare in fretta l'incrocio");
                 break;
             case VERDE:
-                System.out.println("E' possibile attraversare l'incrocio");
+                out.println("E' possibile attraversare l'incrocio");
                 break;
             default:
-                System.out.println("wewe");
+                out.println("wewe");
                 break;
         }
 
@@ -31,13 +33,13 @@ public class Semaforo {
         * non metto break controlla comunque tutti i case
         * per i raggruppamenti si può fare case GIALLO,VERDE */
         switch(c){
-            case NERO -> System.out.println("Semaforo spento");
+            case NERO -> out.println("Semaforo spento");
             case ROSSO -> {
                 int i = 0;
-                System.out.println("Attenzione non attraversare "+i);
+                out.println("Attenzione non attraversare "+i);
             }
-            case GIALLO,VERDE -> System.out.println("E' possibile attraversare l'incrocio");
-            default -> System.out.println("wewe");
+            case GIALLO,VERDE -> out.println("E' possibile attraversare l'incrocio");
+            default -> out.println("wewe");
         }
 
         /* Espressione switch: può restituire un valore di ritorno */
@@ -63,7 +65,7 @@ public class Semaforo {
          di variabile
          PROPRIETA' di esaustività: obbligo di avere sempre tutti i casi coperti (quindi
          si potrebbe mettere default per coprirli tutti) */
-        System.out.println(s);
+        out.println(s);
 
         /* jdk>17 il case può valutare non solo rispetto al valore ma anche
          sulla gerarchia */

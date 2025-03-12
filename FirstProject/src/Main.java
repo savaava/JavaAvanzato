@@ -13,8 +13,7 @@ public class Main {
         netbeans 17 o 21 per usare le jdk successive
         */
 
-        Forma f = new Forma();
-        Triangolo g = new Triangolo();
+        Triangolo g = new TriangoloEquilatero();
 
         /*
         * Se specifichiamo per i tipi parametrizzati dei limiti come T extends Video ->

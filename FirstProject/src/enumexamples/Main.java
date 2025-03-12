@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         /* in realtà sto instanziando un oggetto, quindi un Enum è una classe */
         Colore c = Colore.GIALLO;
+        System.out.println(Colore.valueOf("GIALLO"));
 
         System.out.println(c.getRGB());
 
