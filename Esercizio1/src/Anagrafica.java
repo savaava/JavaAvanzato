@@ -31,27 +31,22 @@ public class Anagrafica {
                 String matricola = scanner.next();
                 String tipoMembro = scanner.next();
 
-                if(tipoMembro.equals("studente")){
-                    double votoMedio = scanner.nextDouble();
-                    String corsoDiStudio = scanner.next();
-                    CorsoDiStudi c = switch(corsoDiStudio){
-                        case "LT" -> CorsoDiStudi.LT;
-                        case "LM" -> CorsoDiStudi.LM;
-                        case "PhD" -> CorsoDiStudi.PhD;
-                        default -> null;
-                    };
-                    if(c!=null) {
+                switch(tipoMembro){
+                    case "studente" -> {
+                        double votoMedio = scanner.nextDouble();
+                        CorsoDiStudi corsoDiStudio =CorsoDiStudi.valueOf(scanner.next());
                         Studente studenteToAdd = new Studente(
-                                codiceFiscale, nomeCompleto, matricola, votoMedio, c
+                                codiceFiscale, nomeCompleto, matricola, votoMedio, corsoDiStudio
                         );
                         aOut.aggiuntaMembroUnisa(studenteToAdd);
                     }
-                }else{ /* docente */
-                    String insegnamento = scanner.next();
-                    Docente docenteToAdd = new Docente(
-                        codiceFiscale, nomeCompleto, matricola, insegnamento
-                    );
-                    aOut.aggiuntaMembroUnisa(docenteToAdd);
+                    case "docente" -> {
+                        String insegnamento = scanner.next();
+                        Docente docenteToAdd = new Docente(
+                                codiceFiscale, nomeCompleto, matricola, insegnamento
+                        );
+                        aOut.aggiuntaMembroUnisa(docenteToAdd);
+                    }
                 }
             }
         }
@@ -75,7 +70,6 @@ public class Anagrafica {
                         pw.append("docente").append(delimiter);
                         pw.append(docente.getInsegnamento()).append("\n");
                     }
-                    default -> pw.append("\n");
                 }
             }
         }
