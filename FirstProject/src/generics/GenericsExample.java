@@ -4,18 +4,56 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GenericsExample {
+    private static void print1(List<? extends Number> l){
+//        l.add(8.6);
+
+        for(Number e : l){
+            System.out.println(e+" → "+e.getClass());
+        }
+    }
+    private static void print2(List<? super Double> l){ /* ? può essere Double, Number o Object */
+        Double n = 8.6;
+        l.add(n);
+
+        for(Object e : l){
+            System.out.println(e+" → "+e.getClass());
+        }
+    }
+    private static <T extends Number> void print3(List<T> l, T n){
+        l.add(n);
+
+        for(T e : l){
+            System.out.println(e+" → "+e.getClass());
+        }
+    }
+
     public static void main(String[] args) {
-        checkNumbersE(2.2, new ArrayList<Number>());
-        checkNumbersS(2.2, new ArrayList<Object>());
+        List<Number> l = new ArrayList<>();
+        l.add(2.2);
+        l.add(0.1f);
+        l.add(5);
 
-        checkNumbersG(2, new ArrayList<Integer>());
-        checkNumbersG(2.2, new ArrayList<Double>());
-
+        print1(l);
+        System.out.println();
+        print2(l);
         System.out.println();
 
-        Range<Integer> ri = new Range<>(2,4);
-        System.out.println(ri.contains(3));
-        System.out.println(ri.contains(5));
+        List<Double> l2 = new ArrayList<>();
+        l2.add(2.2);
+        l2.add(0.1);
+        print3(l2, 5.9);
+
+//        checkNumbersE(2.2, new ArrayList<Number>());
+//        checkNumbersS(2.2, new ArrayList<Object>());
+//
+//        checkNumbersG(2, new ArrayList<Integer>());
+//        checkNumbersG(2.2, new ArrayList<Double>());
+//
+//        System.out.println();
+//
+//        Range<Integer> ri = new Range<>(2,4);
+//        System.out.println(ri.contains(3));
+//        System.out.println(ri.contains(5));
     }
 
     /* PECS: Producer Extends Consumer Super
