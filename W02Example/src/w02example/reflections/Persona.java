@@ -1,7 +1,5 @@
 package w02example.reflections;
 
-import java.util.Objects;
-
 public class Persona {
     private String nome;
     private String cognome;

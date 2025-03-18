@@ -1,6 +1,9 @@
 package w02example.reflections;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.lang.reflect.Parameter;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,23 +26,72 @@ public class Main {
         }catch(ClassNotFoundException e) {System.out.println(e.getMessage());}
 
         inspectClass(c);
+
+        /* ANNOTAZIONI e processori di annotazioni
+        * annotazione marcatrice quando non ha elementi ma è solo una specifica
+        * in fase di ispezione
+        *  */
     }
 
     /* creiamo un metodo per ispezionare una classe: */
-    private static void inspectClass(Class<?> c){
+    private static void inspectClass(Class<?> c) {
         /* vi sono molti nomi: nome canonico e nome normale cambia molto
-        * quando ci sono le classi innestate e quindi per questo esempio
-        * getName o getCanonicName dà la stessa cosa */
+         * quando ci sono le classi innestate e quindi per questo esempio
+         * getName o getCanonicName dà la stessa cosa */
         System.out.println(c.getCanonicalName());
 
-        System.out.println("*** costruttori ***");
+        System.out.println("*** Costruttori ***");
         Constructor<?>[] cc = c.getConstructors();
         /* getDeclaredConstructor
         declared -> se è una sottoclasse si dichiarano solo i metodi
         * della sottoclasse (quelli nuovi o quelli ridefiniti)
          senza declared -> tutti i metodi di tutta la gerarchia */
-        for(Constructor<?> ci : cc){
-            System.out.println(ci.getName());
+        StringBuilder signature = new StringBuilder();
+        for (Constructor<?> ci : cc) {
+            signature.append(Modifier.toString(ci.getModifiers())).append(" ");
+            signature.append(c.getSimpleName()).append("( ");
+            Parameter pVett[] = ci.getParameters();
+            for (Parameter pi : pVett) {
+                signature.append(pi.getType().getSimpleName()).append(" ");
+                signature.append(pi.getName()).append(",");
+            }
+            signature.setCharAt(signature.length() - 1, ')');
+
+            signature.append("\n");
         }
+        System.out.println(signature.toString());
+
+        System.out.println("*** Metodi ***");
+        /* senza declared mi mostra tutti i metodi anche quelli delle superclassi
+        * con declared solo i metodi definiti nella classe stessa o ridefiniti */
+        Method m[] = c.getDeclaredMethods();
+
+        StringBuilder s = new StringBuilder();
+        for(Method mi : m){
+            s.append(Modifier.toString(mi.getModifiers())).append(" ");
+            s.append(mi.getReturnType().getSimpleName()).append(" ");
+            s.append(mi.getName()).append("( ");
+
+            Parameter p[] = mi.getParameters();
+            for(Parameter pi : p){
+                s.append(pi.getType().getSimpleName()).append(" ");
+                s.append(pi.getName()).append(",");
+            }
+            s.setCharAt(s.length()-1, ')');
+
+            DaImplementare di = null;
+            if((di = mi.getAnnotation(DaImplementare.class)) != null){
+                s.append(" ----> "+di.toString()+": "+di.value()+", "+di.assegnatoA()+", "+di.assegnatoB());
+            }
+            /* senza meta annotazioni non riesce e a individuare l'annotazione
+            * quindi con le meta annotazioni si annotano le annotazioni e
+            * si definisce Retention la policy di visibilità (di default è di class)
+            * a che livello l'annotazione deve essere visibile ?
+            * (1 RUNTIME, 2 CLASS (default), 3 SOURCE)
+            * @Documented  */
+
+            s.append("\n");
+        }
+        System.out.println(s);
     }
 }
