@@ -27,10 +27,30 @@ public class Main {
 
         inspectClass(c);
 
-        /* ANNOTAZIONI e processori di annotazioni
-        * annotazione marcatrice quando non ha elementi ma è solo una specifica
-        * in fase di ispezione
-        *  */
+        /* Possiamo definire PROCESSORI DI ANNOTAZIONE agiscono a lvl di compilazione
+        * Le annotazioni vengono rilevate
+        * Meccanismo per la validazione, documentazione e generazione del codice
+        * package javax.annotation.processing per i metodi per definire l'annotazione
+        * e le sue proprietà
+        * possiamo gestire anche i livelli: errore o semplice warning in base a cosa non
+        * è stato rispettato nella definizione del metodo o classe annotata con la mia
+        * annotazione personalizzata. Voglio che gli avvertimenti avvengano a tempo di
+        * compilazione
+        * AbstractProcessor del package di prima
+        * process da ridefinire con 2 parametri
+        * - set di annotations limitato superiormente (TypeElement != ElementType)
+        * - RoundEnvironment -> è un ciclo di acquisizione di annotazioni
+        * un'annotazione può essere gestita da più cicli (da più fasi) perchè il processore
+        * ha bisogno di un round successivo per generare altro codice
+        * Ci possono essere più processori e più round per ogni processore
+        *
+        *
+        * Bisogna importare la dipendenza: importare il .jar del progetto con
+        * l'annotazione e il processore dell'annotazione
+        * Il progetto che importa la dipendenza devo farlo nel classPath
+        * 2 per farlo funzionare nell'ambiente dobbiamo abilitare l'Annotation Processing
+        * in Compiling e aggiungere il processore di annotazione con il path completo:
+        * annotation.processor. */
     }
 
     /* creiamo un metodo per ispezionare una classe: */

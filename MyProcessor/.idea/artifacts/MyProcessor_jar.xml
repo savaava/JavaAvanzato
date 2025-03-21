@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MyProcessor:jar">
+    <output-path>$PROJECT_DIR$</output-path>
+    <root id="archive" name="MyProcessor.jar">
+      <element id="module-output" name="MyProcessor" />
+    </root>
+  </artifact>
+</component>
