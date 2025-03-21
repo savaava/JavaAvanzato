@@ -59,7 +59,7 @@ public class Main {
 
             signature.append("\n");
         }
-        System.out.println(signature.toString());
+        System.out.println(signature);
 
         System.out.println("*** Metodi ***");
         /* senza declared mi mostra tutti i metodi anche quelli delle superclassi
@@ -79,7 +79,7 @@ public class Main {
             }
             s.setCharAt(s.length()-1, ')');
 
-            DaImplementare di = null;
+            DaImplementare di;
             if((di = mi.getAnnotation(DaImplementare.class)) != null){
                 s.append(" ----> "+di.toString()+": "+di.value()+", "+di.assegnatoA()+", "+di.assegnatoB());
             }
