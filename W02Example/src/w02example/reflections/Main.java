@@ -9,18 +9,9 @@ public class Main {
     public static void main(String[] args) {
         Studente s = new Studente("Mario","Rossi","MRS0001","087654567");
 
-        /* E' un metodo di tipo class che è una classe a sua volta di tipo parametro
-        * Class<?>, dove ? sarà Studente */
         s.getClass();
-
-        /* quindi può essere una qualsiasi classe. Racchiude la struttura della classe
-        * e ci fornisce una scansione, come posso fare la scansione: */
         Class<?> c = s.getClass();
-        /* altri modi per ottenere l'oggetto class: */
         Class<?> c1 = Studente.class;
-        /* oppure ocn class for name:
-        * siccome stiamo passando una stringa la classe potrebbe non esistere e quindi
-        * gestire l'eccezione controllata: */
         try{
             Class<?> c2 = Class.forName("w02example.reflections.Studente");
         }catch(ClassNotFoundException e) {System.out.println(e.getMessage());}
@@ -61,11 +52,7 @@ public class Main {
         System.out.println(c.getCanonicalName());
 
         System.out.println("*** Costruttori ***");
-        Constructor<?>[] cc = c.getConstructors();
-        /* getDeclaredConstructor
-        declared -> se è una sottoclasse si dichiarano solo i metodi
-        * della sottoclasse (quelli nuovi o quelli ridefiniti)
-         senza declared -> tutti i metodi di tutta la gerarchia */
+        Constructor<?>[] cc = c.getDeclaredConstructors();
         StringBuilder signature = new StringBuilder();
         for (Constructor<?> ci : cc) {
             signature.append(Modifier.toString(ci.getModifiers())).append(" ");
@@ -82,8 +69,6 @@ public class Main {
         System.out.println(signature);
 
         System.out.println("*** Metodi ***");
-        /* senza declared mi mostra tutti i metodi anche quelli delle superclassi
-        * con declared solo i metodi definiti nella classe stessa o ridefiniti */
         Method m[] = c.getDeclaredMethods();
 
         StringBuilder s = new StringBuilder();
@@ -99,16 +84,10 @@ public class Main {
             }
             s.setCharAt(s.length()-1, ')');
 
-            DaImplementare di;
-            if((di = mi.getAnnotation(DaImplementare.class)) != null){
+            DaImplementare di = mi.getAnnotation(DaImplementare.class);
+            if(di != null){
                 s.append(" ----> "+di.toString()+": "+di.value()+", "+di.assegnatoA()+", "+di.assegnatoB());
             }
-            /* senza meta annotazioni non riesce e a individuare l'annotazione
-            * quindi con le meta annotazioni si annotano le annotazioni e
-            * si definisce Retention la policy di visibilità (di default è di class)
-            * a che livello l'annotazione deve essere visibile ?
-            * (1 RUNTIME, 2 CLASS (default), 3 SOURCE)
-            * @Documented  */
 
             s.append("\n");
         }

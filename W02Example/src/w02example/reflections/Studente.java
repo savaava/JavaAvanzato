@@ -12,14 +12,14 @@ public class Studente extends Persona{
         return matricola;
     }
 
-    @DaImplementare(value = "Mario",assegnatoA = "we",assegnatoB = "wewe")
+    @DaImplementare(value=55, assegnatoA="we", assegnatoB="wewe5")
     private String generaMatricola() {
         return null;
     }
 
     @Override
+    @DaImplementare(55)
     public String toString() {
-        return super.toString()+
-                " matricola=" + matricola;
+        return super.toString()+" matricola="+matricola;
     }
 }
