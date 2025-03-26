@@ -20,8 +20,6 @@ public class SetterProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        /* a quale round sto gestendo l'annotazione, il compilatore trova il codice compilato
-         * con Setter: */
         Set<? extends Element> annotatedElements = roundEnv.getElementsAnnotatedWith(Setter.class);
         for (Element element : annotatedElements) {
             if (element.getKind() == ElementKind.METHOD) {

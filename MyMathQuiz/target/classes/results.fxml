@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gruppoG1.ResultsController">
+    <children>
+        <VBox alignment="TOP_CENTER" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <children>
+                <TableView fx:id="table" prefHeight="250.0" prefWidth="580.0">
+                    <columns>
+                        <TableColumn fx:id="attemptColumn" prefWidth="295.0" text="Tentativo" />
+                        <TableColumn fx:id="resultColumn" prefWidth="295.0" text="Esito" />
+                    </columns>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </TableView>
+                <Label fx:id="promptLbl" text="Prompt" />
+                <Button fx:id="exportBtn" mnemonicParsing="false" onAction="#onExport" text="Esporta" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

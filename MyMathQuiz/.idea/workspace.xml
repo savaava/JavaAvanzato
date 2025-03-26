@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="afb08079-5073-4f2e-b7e0-ecf554710ff4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyProcessor/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyProcessor/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyProcessor/.idea/artifacts/MyProcessor_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyProcessor/.idea/discord.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyProcessor/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyProcessor/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyProcessor/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyProcessor/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyProcessor/src/main/java/annotation/AtMostThree.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyProcessor/src/main/java/annotation/FieldNumberConstraint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyProcessor/src/main/java/annotation/processor/MyProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/.idea/discord.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/src/main/java/org/example/LongClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SetterProcessor/src/annotation/processor/SetterProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SetterProcessor/src/annotation/processor/SetterProcessor.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="JavaFXApplication" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Mongisa&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:Mongisa/OOP-projects.git&quot;,
+    &quot;accountId&quot;: &quot;e43f661a-73dd-4331-9007-7e19529e84e5&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2uoDgRLwU7khIwrfl4BBWHZTbN8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.MyMathQuiz.executor": "Run",
+    "Application.MyMathQuizApp.executor": "Run",
+    "Application.Run.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/andre/Desktop/Repositories/JavaAvanzato/AnnotationsProject",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\andre\Desktop\MyMathQuiz\src\main\resources" />
+      <recent name="C:\Users\andre\Desktop\MyMathQuiz\src\main\java\gruppoG1" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Run" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="gruppoG1.MyMathQuizApp" />
+      <module name="MyMathQuiz" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="afb08079-5073-4f2e-b7e0-ecf554710ff4" name="Changes" comment="" />
+      <created>1742906144096</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1742906144096</updated>
+      <workItem from="1742906145770" duration="6893000" />
+      <workItem from="1742928972482" duration="6575000" />
+      <workItem from="1742935715713" duration="978000" />
+      <workItem from="1742996273177" duration="95000" />
+      <workItem from="1742996371658" duration="1823000" />
+      <workItem from="1743001510501" duration="37000" />
+      <workItem from="1743013421043" duration="2000" />
+      <workItem from="1743013427012" duration="6000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/../.." />
+    </ignored-roots>
+  </component>
+</project>
