@@ -23,4 +23,11 @@
 hs_err_pid*
 replay_pid*
 
+
 **/target/
+
+#.idea/workspace.xml
+#.idea/misc.xml
+#.idea/vcs.xml
+#.idea/dictionaries/
+#.idea/compiler.xml
