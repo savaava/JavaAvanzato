@@ -5,30 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="afb08079-5073-4f2e-b7e0-ecf554710ff4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyProcessor/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyProcessor/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyProcessor/.idea/artifacts/MyProcessor_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyProcessor/.idea/discord.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyProcessor/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyProcessor/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyProcessor/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyProcessor/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyProcessor/src/main/java/annotation/AtMostThree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyProcessor/src/main/java/annotation/FieldNumberConstraint.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyProcessor/src/main/java/annotation/processor/MyProcessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/.idea/discord.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/src/main/java/org/example/LongClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ProgettoAnnotazioni/src/main/java/org/example/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SetterProcessor/src/annotation/processor/SetterProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SetterProcessor/src/annotation/processor/SetterProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +58,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/andre/Desktop/Repositories/JavaAvanzato/AnnotationsProject",
+    "last_opened_file_path": "C:/Users/andre/Desktop/MyMathQuiz",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -133,6 +110,8 @@
       <workItem from="1743001510501" duration="37000" />
       <workItem from="1743013421043" duration="2000" />
       <workItem from="1743013427012" duration="6000" />
+      <workItem from="1743078328283" duration="1233000" />
+      <workItem from="1743149826766" duration="41000" />
     </task>
     <servers />
   </component>
