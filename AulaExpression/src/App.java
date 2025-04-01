@@ -19,7 +19,7 @@ public class App {
         });
         System.out.println(v1);
 
-        Videoteca v2= v.filtra(f -> f.getGenere().equals(Genere.AZIONE));
+        Videoteca v2 = v.filtra(f -> f.getGenere().equals(Genere.AZIONE)).filtra(f -> f.getValutazione()>7);
         System.out.println(v2);
 
         v.aggiorna(f -> f.setValutazione(8));
@@ -32,7 +32,29 @@ public class App {
                 v.estraiCampi(f -> f.getGenere())
         );
 
-        Collection<?> c = v.estraiCampi(Film::getGenere);
+        EstraiCampo<Genere> ec = f -> f.getGenere();
+        System.out.println(
+                v.estraiCampi(ec)
+        );
+
+        Collection<?> c = v.estraiCampi(f -> f.getGenere());
         System.out.println(c);
+
+        /* ----------------------- */
+
+        System.out.println(
+                v.filtra(Filtri::isBelFilm)
+        );
+
+        Filtri filtri = new Filtri();
+        System.out.println(
+                v.filtra(filtri::isFantascienza)
+        );
+
+        Collection<?> c2 = v.estraiCampi(Film::getGenere);
+
+        /*
+        * Supplier serve soprattuto quando ci serve un'istanza runtime
+        *  */
     }
 }
