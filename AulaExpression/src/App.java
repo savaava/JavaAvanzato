@@ -10,7 +10,7 @@ public class App {
         v.aggiungi(new Film("Sharkando", Genere.AZIONE, 4));
 
         System.out.println(v);
-        Videoteca v2= v.filtra(f -> f.getGenere().equals(Genere.AZIONE));
+        Videoteca v2 = v.filtra(f -> f.getGenere().equals(Genere.AZIONE)).filtra(f -> f.getValutazione()>7);
         System.out.println(v2);
 
         v.aggiorna(f -> f.setValutazione(8));
@@ -19,7 +19,29 @@ public class App {
         /* metodo d'istanza di un certo tipo (Film) ->
         * estraiCampi accetta film e restituisce un tipo quindi i get
         * vanno bene */
-        Collection<?> c = v.estraiCampi(Film::getGenere);
+        EstraiCampo<Genere> ec = f -> f.getGenere();
+        System.out.println(
+                v.estraiCampi(ec)
+        );
+
+        Collection<?> c = v.estraiCampi(f -> f.getGenere());
         System.out.println(c);
+
+        /* ----------------------- */
+
+        System.out.println(
+                v.filtra(Filtri::isBelFilm)
+        );
+
+        Filtri filtri = new Filtri();
+        System.out.println(
+                v.filtra(filtri::isFantascienza)
+        );
+
+        Collection<?> c2 = v.estraiCampi(Film::getGenere);
+
+        /*
+        * Supplier serve soprattuto quando ci serve un'istanza runtime
+        *  */
     }
 }
