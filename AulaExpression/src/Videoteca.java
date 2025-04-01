@@ -46,6 +46,8 @@ public class Videoteca {
 
     @Override
     public String toString() {
-        return "Videoteca [videoteca=" + videoteca + "]";
+        StringBuffer strb = new StringBuffer("Videoteca:\n");
+        videoteca.forEach(fi -> strb.append(fi).append("\n"));
+        return strb.toString();
     }
 }
