@@ -1,14 +1,13 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 public class Videoteca {
-    private List <Film> videoteca;
+    private Set<Film> videoteca;
 
     public Videoteca(){
-        videoteca=new ArrayList<>();
+        videoteca=new HashSet<>();
     }
 
     public void aggiungi(Film f){
@@ -71,9 +70,9 @@ public class Videoteca {
         return c;
     }
 
-    /*
-    * Function E' l'equivalente generico di EstraiCampo
-    * */
+    public Stream<Film> stream(){
+        return videoteca.stream();
+    }
 
     @Override
     public String toString() {

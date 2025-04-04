@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Film {
     private String titolo;
     private Genere genere;
@@ -28,6 +30,18 @@ public class Film {
     }
     public void setValutazione(int valutazione) {
         this.valutazione = valutazione;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Film film = (Film) o;
+        return titolo.equals(film.titolo);
+    }
+
+    @Override
+    public int hashCode() {
+        return titolo.hashCode();
     }
 
     @Override
