@@ -1,3 +1,5 @@
+package com.savaava;
+
 import java.util.Collection;
 
 public class App {

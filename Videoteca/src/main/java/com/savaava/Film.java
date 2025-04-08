@@ -1,4 +1,4 @@
-import java.util.Objects;
+package com.savaava;
 
 public class Film {
     private String titolo;

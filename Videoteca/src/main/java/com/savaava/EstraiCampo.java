@@ -1,3 +1,5 @@
+package com.savaava;
+
 @FunctionalInterface
 public interface EstraiCampo<T> {
     T estrai(Film f);

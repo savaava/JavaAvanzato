@@ -1,3 +1,5 @@
+package com.savaava;
+
 public class Filtri {
     public static boolean isBelFilm(Film f) {
         return f.getValutazione() > 5;
