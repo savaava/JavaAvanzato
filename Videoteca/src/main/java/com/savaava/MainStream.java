@@ -1,10 +1,23 @@
 package com.savaava;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MainStream {
+    /*
+    * Anche con gli Optional è possibile applicare filter, map, ...
+    * con la sola differenza che nel caso di uno stream si ha una corrispondenza per ogni
+    * elemento della collezione nel capo dell'optional si ha naturalmente la corrispondenza
+    * del singolo elemento
+    * */
+
     public static void main(String[] args) {
+        Optional<Genere> genere = Optional.ofNullable(Genere.AZIONE);
+        genere.map(g -> g.toString().length())
+                .filter(i -> i>5)
+                .isPresent();
+
         List<String> l = List.of("uno", "due", "tre", "quattro", "cinque", "sei", "sette");
 
         l.stream()
@@ -88,6 +101,10 @@ public class MainStream {
                 .toList();
         System.out.println(parole);
 
+        Set<?> s = v.stream()
+                .filter(film -> film.getGenere()==Genere.COMMEDIA)
+                .map(Film::getTitolo)
+                .collect(Collectors.toCollection(TreeSet::new));
         /* IMPORTANTE: Collectors Collect per ottenere altre collezioni e non una lista da toList() */
     }
 }
