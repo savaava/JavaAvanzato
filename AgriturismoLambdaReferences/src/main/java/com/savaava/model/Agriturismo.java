@@ -82,6 +82,11 @@ public class Agriturismo {
     public int getPostiRoulotte() {
         return postiRoulotte;
     }
+
+    public int getPostiCamping() {
+        return postiRoulotte + postiTenda;
+    }
+
     public void setPostiRoulotte(int postiRoulotte) {
         this.postiRoulotte = postiRoulotte;
     }
@@ -106,7 +111,6 @@ public class Agriturismo {
     public void setCamping(boolean camping) {
         this.camping = camping;
     }
-
 
     public String shortInfo(String info1, String info2, BiFunction<String, String, String> biFunction){
         return biFunction.apply(info1, info2);

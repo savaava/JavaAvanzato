@@ -4,7 +4,7 @@ import java.util.function.Supplier;
 
 public class TestAgriturismiLambda {
     public static void main(String[] args) {
-        ElencoAgriturismo elencoAgriturismo = ElencoAgriturismo.caricaCSV("Agriturismi-Napoli.csv");
+        ElencoAgriturismi elencoAgriturismo = ElencoAgriturismi.caricaCSV("Agriturismi-Napoli.csv");
 
         Supplier<Agriturismo> agriturismoFactoryGragnano = () -> new Agriturismo(
                 "GRAGNANO",
@@ -28,7 +28,7 @@ public class TestAgriturismiLambda {
         );
 
 
-        ElencoAgriturismo e = elencoAgriturismo.filtra(a -> a.getPostiLetto()>16);
+        ElencoAgriturismi e = elencoAgriturismo.filtra(a -> a.getPostiLetto()>16);
         System.out.println("\nAgriturismi con posti letto > 16"+e+e.numeroAgriturismi());
 
 
@@ -48,7 +48,7 @@ public class TestAgriturismiLambda {
         });
         System.out.println("Aggiornamento agriturismi di Pernottamento e Camping:"+elencoAgriturismo);
 
-        ElencoAgriturismo e2 = elencoAgriturismo.filtra(a -> a.getComuneAzienda().equalsIgnoreCase("SORRENTO"));
+        ElencoAgriturismi e2 = elencoAgriturismo.filtra(a -> a.getComuneAzienda().equalsIgnoreCase("SORRENTO"));
         Integer sommaPostiLetto = e2.somma(a -> a.getPostiLetto());
         System.out.println("Agriturismi Gragnano"+e2+"Somma dei posti letto: "+sommaPostiLetto);
     }
