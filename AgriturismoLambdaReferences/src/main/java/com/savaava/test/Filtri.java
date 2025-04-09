@@ -1,4 +1,6 @@
-package com.savaava;
+package com.savaava.test;
+
+import com.savaava.model.Agriturismo;
 
 public class Filtri {
     public static void aggiornaPernottamento(Agriturismo agriturismo){

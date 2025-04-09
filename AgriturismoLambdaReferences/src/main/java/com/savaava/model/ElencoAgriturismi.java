@@ -1,4 +1,4 @@
-package com.savaava;
+package com.savaava.model;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

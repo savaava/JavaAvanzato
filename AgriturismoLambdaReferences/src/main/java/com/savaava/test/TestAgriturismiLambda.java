@@ -1,4 +1,7 @@
-package com.savaava;
+package com.savaava.test;
+
+import com.savaava.model.Agriturismo;
+import com.savaava.model.ElencoAgriturismi;
 
 import java.util.function.Supplier;
 
@@ -33,7 +36,7 @@ public class TestAgriturismiLambda {
 
 
         elencoAgriturismo.ordina(
-                (o1, o2) -> o1.denominazioneAzienda.compareToIgnoreCase(o2.getDenominazioneAzienda())
+                (o1, o2) -> o1.getDenominazioneAzienda().compareToIgnoreCase(o2.getDenominazioneAzienda())
         );
         System.out.println("\nAgriturismi ordinati per denominazioneAzienda:"+elencoAgriturismo);
 

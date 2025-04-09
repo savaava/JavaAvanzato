@@ -1,19 +1,19 @@
-package com.savaava;
+package com.savaava.model;
 
 import java.util.function.BiFunction;
 
 public class Agriturismo {
-    String comuneAzienda;
-    String titolare;
-    String denominazioneAzienda;
-    String indirizzoAzienda;
-    int postiLetto;
-    int postiMacchina;
-    int postiTenda;
-    int postiRoulotte;
-    String recapiti;
-    boolean pernottamento;
-    boolean camping;
+    private String comuneAzienda;
+    private String titolare;
+    private String denominazioneAzienda;
+    private String indirizzoAzienda;
+    private int postiLetto;
+    private int postiMacchina;
+    private int postiTenda;
+    private int postiRoulotte;
+    private String recapiti;
+    private boolean pernottamento;
+    private boolean camping;
 
     public Agriturismo(String comuneAzienda, String titolare, String denominazioneAzienda, String indirizzoAzienda, int postiLetto, int postiMacchina, int postiTenda, int postiRoulotte, String recapiti) {
         this.comuneAzienda = comuneAzienda;

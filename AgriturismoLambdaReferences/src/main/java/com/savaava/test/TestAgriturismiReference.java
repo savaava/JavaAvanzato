@@ -1,4 +1,7 @@
-package com.savaava;
+package com.savaava.test;
+
+import com.savaava.model.Agriturismo;
+import com.savaava.model.ElencoAgriturismi;
 
 import java.util.Comparator;
 
