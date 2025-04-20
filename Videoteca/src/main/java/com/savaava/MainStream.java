@@ -1,14 +1,18 @@
 package com.savaava;
 
 import java.util.*;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MainStream {
     public static void main(String[] args) {
         //m1();
-        m2();
+        //m2();
         //m3();
+        //m4();
+        m5();
+        //m();
     }
     public static String getTitoloMaiuscolo1(String titolo) {
         Optional<String> opt = Optional.ofNullable(titolo);
@@ -31,7 +35,7 @@ public class MainStream {
         List<String> l = List.of("uno", "due", "tre", "quattro", "cinque", "sei", "sette");
 
         l.stream()
-                .map(String::length)
+                .mapToInt(String::length)
                 .filter(len -> len>3)
                 .forEach(len -> System.out.println("Curr len: "+len));
 
@@ -93,6 +97,59 @@ public class MainStream {
 
     }
     private static void m3(){
+        List<Character> chars = List.of('C', 'A', 'B', 'A', 'D');
+        chars.stream()
+                .distinct()
+                .sorted((c1, c2) -> c2.compareTo(c1))
+                .skip(1)
+                .limit(2)
+                .forEach(System.out::println);
+        chars.stream()
+                .distinct()
+                .sorted()
+                .forEach(System.out::println);
+
+        System.out.println();
+
+        List<String> l = List.of("hello", "world", "bello", "allora", "ultima");
+        l.stream()
+                .dropWhile(str -> str.contains("e"))
+                .peek(str -> System.out.print(str+" "))
+                .sorted(String::compareTo)
+                .forEach(str -> System.out.print("\n"+str));
+
+        System.out.println("\n");
+
+        l.stream()
+                .takeWhile(str -> str.contains("e"))
+                .sorted(String::compareTo)
+                .forEach(System.out::println);
+    }
+    private static void m4(){
+        List<Canzone> before2000 = List.of(
+                new Canzone("Bohemian Rhapsody", "Queen"),
+                new Canzone("Stairway to Heaven", "Led Zeppelin"));
+        Playlist plBefore2000 = new Playlist(before2000);
+
+        List<Canzone> after2000 = List.of(
+                new Canzone("Rolling in the Deep", "Adele"),
+                new Canzone("Blinding Lights", "The Weeknd"));
+        Playlist plAfter2000 = new Playlist(after2000);
+
+        List<Playlist> playlists = List.of(plBefore2000, plAfter2000);
+
+        playlists.stream()
+                .flatMap(playlist -> playlist.canzoni().stream())
+                .forEach(System.out::println);
+    }
+    private static void m5(){
+        Map<Integer, List<String>> grouped = List.of("a", "gg", "bb", "ccc")
+                .stream()
+                .collect(Collectors.groupingBy(String::length));
+
+        System.out.println(grouped);
+    }
+    private static void m(){
         Videoteca v = new Videoteca();
         v.aggiungi(new Film("Fast and Furious", Genere.AZIONE, 7));
         v.aggiungi(new Film("La vita è bella", Genere.DRAMMATICO, 8));
@@ -127,10 +184,11 @@ public class MainStream {
         System.out.println(av);
 
 
-        List<?> titoli = v.stream()
+        List<?> generi = v.stream()
                 .map(Film::getGenere)
+                .distinct()
                 .toList();
-        System.out.println(titoli);
+        System.out.println(generi);
 
 
         List<?> parole = v.stream()
@@ -142,6 +200,8 @@ public class MainStream {
                 .filter(film -> film.getGenere()==Genere.COMMEDIA)
                 .map(Film::getTitolo)
                 .collect(Collectors.toCollection(TreeSet::new));
-        /* IMPORTANTE: Collectors Collect per ottenere altre collezioni e non una lista da toList() */
     }
 }
+
+record Canzone(String nomeCanzone, String artista){}
+record Playlist(List<Canzone> canzoni){}

@@ -16,12 +16,6 @@ import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ChatController implements Initializable {
-    /*
-    * ProgressBar
-    * client: trova il server, stato "in connessione" -> stato "connesso" | "Impossibile connettersi"
-    * server: X
-    */
-
     @FXML
     private TextArea chatArea;
     @FXML

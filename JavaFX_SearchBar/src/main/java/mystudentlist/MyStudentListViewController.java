@@ -85,14 +85,12 @@ public class MyStudentListViewController implements Initializable {
             if(newValue == null) return ;
 
             codeField.setText(codeField.getText().replaceAll("[^0-9]",""));
-            if(codeField.getText().length() > 10) {
+            if(codeField.getText().length() > 10)
                 codeField.setText(codeField.getText().substring(0, 10));
-            };
-        });
-        */
+        });*/
 
         TextFormatter<String> tf = new TextFormatter<>(change -> {
-            if(change.getControlNewText().equals("0"))
+            if(codeField.getText().length()>=10)
                 return null;
 
             if(change.getText().matches("[0-9]") || change.getText().isEmpty())
