@@ -44,7 +44,7 @@ public class CaricaReportService extends Service<Integer> {
                         if(! ingEvList.contains(ingEvent))
                             ingEvList.add(ingEvent);
                         updateProgress(iterations, totalIngEv);
-                        Thread.sleep(100);
+                        Thread.sleep(10);
                         iterations++;
                     }
 
@@ -62,8 +62,7 @@ public class CaricaReportService extends Service<Integer> {
     }
 
     public void updateUrl(LocalDate startDate, LocalDate endDate, int limit) {
-        this.url = String.format("http://webservices.ingv.it/fdsnws/event/1/query?starttime=%s&endtime=%s&minmag=2&maxmag=10&mindepth=-10&maxdepth=1000&minlat=-90&maxlat=90&minlon=-180&maxlon=180&minversion=100&orderby=time-asc&format=text&limit=%d",
-                startDate, endDate, limit);
+        url = "http://webservices.ingv.it/fdsnws/event/1/query?starttime="+startDate+"&endtime="+endDate+"&minmag=2&maxmag=10&mindepth=-10&maxdepth=1000&minlat=-90&maxlat=90&minlon=-180&maxlon=180&minversion=100&orderby=time-asc&format=text&limit="+limit;
     }
 
     private INGEvent loadIngEvLine(String ingEvLine){
