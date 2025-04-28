@@ -1,6 +1,7 @@
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.function.Consumer;
 
 public abstract class NetworkConnection {
@@ -68,11 +69,9 @@ public abstract class NetworkConnection {
                     //onReceiver();
                     receiveCallback.accept(msg);
                 }
-            }catch(IOException ex){
-                ex.printStackTrace();
-            }catch(ClassNotFoundException ex){
-                ex.printStackTrace();
-            }
+            }catch (UnknownHostException ex){ ex.printStackTrace();
+            }catch(IOException | ClassNotFoundException ex){ ex.printStackTrace(); }
+
         }
     }
 }
