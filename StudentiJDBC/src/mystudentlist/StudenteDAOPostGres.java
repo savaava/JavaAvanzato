@@ -18,8 +18,11 @@ public class StudenteDAOPostGres implements StudenteDAO {
                 Connection conn = DriverManager.getConnection(URL, USER, PASS);
                 Statement st = conn.createStatement();
         ){
-            String update = String.format("INSERT INTO studente VALUES ('%s', '%s', '%s');",
-                    s.getMatricola(),s.getNome(),s.getCognome());
+            String update = String.format(
+                    "INSERT INTO studente VALUES ('%s', '%s', '%s');",
+                    s.getMatricola(),s.getNome(),s.getCognome()
+            );
+
             st.executeUpdate(update);
         }
     }
@@ -30,7 +33,10 @@ public class StudenteDAOPostGres implements StudenteDAO {
                 Connection conn = DriverManager.getConnection(URL, USER, PASS);
                 Statement st = conn.createStatement();
         ){
-            String update = String.format("DELETE FROM studente WHERE matricola = '%s';",s.getMatricola());
+            String update = String.format(
+                    "DELETE FROM studente WHERE matricola = '%s';",s.getMatricola()
+            );
+
             st.executeUpdate(update);
         }
     }
@@ -41,8 +47,11 @@ public class StudenteDAOPostGres implements StudenteDAO {
                 Connection conn = DriverManager.getConnection(URL, USER, PASS);
                 Statement st = conn.createStatement();
         ){
-            String update = String.format("UPDATE studente SET nome='%s', cognome='%s' WHERE matricola='%s';",
-                    s.getNome(),s.getCognome(),s.getMatricola());
+            String update = String.format(
+                    "UPDATE studente SET nome='%s', cognome='%s' WHERE matricola='%s';",
+                    s.getNome(),s.getCognome(),s.getMatricola()
+            );
+
             st.executeUpdate(update);
         }
     }
@@ -55,8 +64,11 @@ public class StudenteDAOPostGres implements StudenteDAO {
                 Connection conn = DriverManager.getConnection(URL, USER, PASS);
                 Statement st = conn.createStatement();
         ){
-            String qry = String.format("SELECT * FROM studente WHERE matricola='%s';", matricola);
-            ResultSet rs = st.executeQuery(qry);
+            String query = String.format(
+                    "SELECT * FROM studente WHERE matricola='%s';", matricola
+            );
+            ResultSet rs = st.executeQuery(query);
+
             if(rs.next())
                 sOut = new Studente(rs.getString("matricola"),rs.getString("nome"),rs.getString("cognome"));
         }
@@ -67,13 +79,14 @@ public class StudenteDAOPostGres implements StudenteDAO {
     @Override
     public List<Studente> elencaTutti() throws Exception {
         List<Studente> studentiOut = new ArrayList<>();
-
+        //Class.forName("org.postgresql.Driver");
         try(
                 Connection conn = DriverManager.getConnection(URL, USER, PASS);
                 Statement st = conn.createStatement();
         ){
-            String qry = "SELECT * FROM studente;";
-            ResultSet rs = st.executeQuery(qry);
+            String query = "SELECT * FROM studente;";
+            ResultSet rs = st.executeQuery(query);
+
             while(rs.next())
                 studentiOut.add(new Studente(rs.getString("matricola"),rs.getString("nome"),rs.getString("cognome")));
         }

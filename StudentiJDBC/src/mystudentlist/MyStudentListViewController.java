@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mystudentlist;
 
 import java.io.BufferedWriter;
@@ -32,10 +27,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.FileChooser;
 
-/**
- *
- * @author lucagreco
- */
 public class MyStudentListViewController implements Initializable {
     @FXML
     private MenuItem saveButton;
@@ -77,6 +68,7 @@ public class MyStudentListViewController implements Initializable {
         nameClm.setCellFactory(TextFieldTableCell.forTableColumn());
 
         studenti = FXCollections.observableArrayList();
+        initItems();
 
         handleSearchField();
     }
@@ -104,9 +96,12 @@ public class MyStudentListViewController implements Initializable {
     }
 
     private void initItems() {
-        studenti.add(new Studente("Mario", "Rossi", "06127001"));
-        studenti.add(new Studente("Ernesto", "Rossi", "06127002"));
-        studenti.add(new Studente("Davide", "Rossi", "06127003"));
+//        studenti.add(new Studente("Mario", "Rossi", "06127001"));
+//        studenti.add(new Studente("Ernesto", "Rossi", "06127002"));
+//        studenti.add(new Studente("Davide", "Rossi", "06127003"));
+        try {
+            studenti.addAll(studenteDAO.elencaTutti());
+        } catch (Exception e) {e.printStackTrace();}
     }
 
     private void handleSearchField(){
@@ -136,50 +131,29 @@ public class MyStudentListViewController implements Initializable {
 
     @FXML
     private void saveFile(ActionEvent event) {
-        
         FileChooser fc = new FileChooser();
-        
         File file = fc.showSaveDialog(nameField.getParent().getScene().getWindow());
         
         if(file != null) {
-        
             try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)))) {
-            
-            
                 for(Studente s : studenti) {
-                    
                     pw.append(s.getNome() + ';');
                     pw.append(s.getCognome() + ';');
                     pw.append(s.getMatricola() + '\n');
-                    
-                    
-                
-                
                 }
-                
-            
-            
             } catch (IOException ex) {
                 Logger.getLogger(MyStudentListViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
-        
-        
-        } 
-        
-        
-        
-       
+        }
     }
 
     @FXML
     private void quitApp(ActionEvent event) {
-        
         Platform.exit();
     }
 
     @FXML
-    private void addStudent(ActionEvent event) {
+    private void addStudent() {
         Studente sToAdd = new Studente(nameField.getText(), surnameField.getText(),codeField.getText());
         try {
             studenteDAO.inserisci(sToAdd);
@@ -188,11 +162,11 @@ public class MyStudentListViewController implements Initializable {
     }
 
     @FXML
-    private void removeStudent(ActionEvent event) {
+    private void removeStudent() {
 
         Studente sToRemove = studentTable.getSelectionModel().getSelectedItem();
         try {
-            studenteDAO.inserisci(sToRemove);
+            studenteDAO.rimuovi(sToRemove);
             studenti.remove(sToRemove);
         } catch (Exception e) {e.printStackTrace();}
     }

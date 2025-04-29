@@ -9,10 +9,9 @@ import javafx.stage.Stage;
 public class MyStudentList extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/MyStudentListView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("MyStudentListView.fxml"));
 
         Scene scene = new Scene(root);
-        
         
         stage.setTitle("MyStudentList");
         stage.setScene(scene);
