@@ -69,6 +69,7 @@ public class StudenteDAOPostGres implements StudenteDAO {
             );
             ResultSet rs = st.executeQuery(query);
 
+
             if(rs.next())
                 sOut = new Studente(rs.getString("matricola"),rs.getString("nome"),rs.getString("cognome"));
         }
