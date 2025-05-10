@@ -8,7 +8,10 @@ public class MainExecutors {
         ExecutorService service = Executors.newFixedThreadPool(10);
         for(int i=0; i<100; i++){
             Future<Integer> future = service.submit(new Processo(i));
-            System.out.println(" Valore: "+future.get());
+            //System.out.println(" Valore: "+future.get());
+            /* con questa get (bloccante) aspettiamo ad ogni iterazione che il task
+            * finisca quindi non mi consente di passare al processo successivo prima
+            * di ottenere il risultato del task corrente -> non sfruttiamo il pool */
         }
         service.shutdown();
 
@@ -18,9 +21,6 @@ public class MainExecutors {
             return 99;
         });
         s.shutdown();
-
-        Future<Integer> f = Executors.newSingleThreadExecutor().submit(() -> 33);
-        System.out.println(f.get());
     }
 }
 
@@ -33,7 +33,7 @@ class Processo implements Callable<Integer>{
 
     @Override
     public synchronized Integer call() {
-        System.out.print("ID: "+id+" - thread: "+Thread.currentThread().getName());
+        System.out.println("ID: "+id+" - thread: "+Thread.currentThread().getName());
         return id;
     }
 }
