@@ -156,14 +156,13 @@ public class MyStudentListViewController implements Initializable {
     private void addStudent() {
         Studente sToAdd = new Studente(nameField.getText(), surnameField.getText(),codeField.getText());
         try {
-            studenteDAO.inserisci(sToAdd);
-            studenti.add(sToAdd);
+            if(studenteDAO.inserisci(sToAdd))
+                studenti.add(sToAdd);
         } catch (Exception e) {e.printStackTrace();}
     }
 
     @FXML
     private void removeStudent() {
-
         Studente sToRemove = studentTable.getSelectionModel().getSelectedItem();
         try {
             studenteDAO.rimuovi(sToRemove);

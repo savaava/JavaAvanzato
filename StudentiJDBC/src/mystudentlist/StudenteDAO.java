@@ -3,7 +3,7 @@ package mystudentlist;
 import java.util.List;
 
 public interface StudenteDAO {
-    void inserisci(Studente s) throws Exception;
+    boolean inserisci(Studente s) throws Exception;
 
     void rimuovi(Studente s) throws Exception;
 

@@ -13,11 +13,16 @@ public class StudenteDAOPostGres implements StudenteDAO {
     private final String PASS = "postAndrea.55";
 
     @Override
-    public void inserisci(Studente s) throws Exception {
+    public boolean inserisci(Studente s) throws Exception {
         try(
                 Connection conn = DriverManager.getConnection(URL, USER, PASS);
                 Statement st = conn.createStatement();
         ){
+            if(cerca(s.getMatricola())!=null){
+                System.out.println("Studente con matricola "+s.getMatricola()+" già presente -> impossibile inserire");
+                return false;
+            }
+
             String update = String.format(
                     "INSERT INTO studente VALUES ('%s', '%s', '%s');",
                     s.getMatricola(),s.getNome(),s.getCognome()
@@ -25,6 +30,8 @@ public class StudenteDAOPostGres implements StudenteDAO {
 
             st.executeUpdate(update);
         }
+
+        return true;
     }
 
     @Override
@@ -34,7 +41,8 @@ public class StudenteDAOPostGres implements StudenteDAO {
                 Statement st = conn.createStatement();
         ){
             String update = String.format(
-                    "DELETE FROM studente WHERE matricola = '%s';",s.getMatricola()
+                    "DELETE FROM studente WHERE matricola = '%s';",
+                    s.getMatricola()
             );
 
             st.executeUpdate(update);
@@ -65,7 +73,8 @@ public class StudenteDAOPostGres implements StudenteDAO {
                 Statement st = conn.createStatement();
         ){
             String query = String.format(
-                    "SELECT * FROM studente WHERE matricola='%s';", matricola
+                    "SELECT * FROM studente WHERE matricola='%s';",
+                    matricola
             );
             ResultSet rs = st.executeQuery(query);
 
@@ -89,7 +98,7 @@ public class StudenteDAOPostGres implements StudenteDAO {
             ResultSet rs = st.executeQuery(query);
 
             while(rs.next())
-                studentiOut.add(new Studente(rs.getString("matricola"),rs.getString("nome"),rs.getString("cognome")));
+                studentiOut.add(new Studente(rs.getString("nome"),rs.getString("cognome"),rs.getString("matricola")));
         }
 
         return studentiOut;

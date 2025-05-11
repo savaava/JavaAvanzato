@@ -1,5 +1,6 @@
 package cyclicbarriers;
 
+import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 public class Festa implements Runnable {
@@ -15,8 +16,8 @@ public class Festa implements Runnable {
             System.out.println(Thread.currentThread().getName()+" E' in attesa degli altri partecipanti");
             barrier.await();
             System.out.println(Thread.currentThread().getName()+" Ha iniziato a festeggiare");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (InterruptedException | BrokenBarrierException ex) {
+            ex.printStackTrace();
         }
     }
 }
