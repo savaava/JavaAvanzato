@@ -12,9 +12,9 @@ public class Festa implements Runnable {
     @Override
     public void run() {
         try{
-            System.out.println("E' in attesa degli altri partecipanti");
+            System.out.println(Thread.currentThread().getName()+" E' in attesa degli altri partecipanti");
             barrier.await();
-            System.out.println("Ha iniziato a festeggiare");
+            System.out.println(Thread.currentThread().getName()+" Ha iniziato a festeggiare");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
