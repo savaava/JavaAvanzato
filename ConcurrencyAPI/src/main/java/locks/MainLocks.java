@@ -10,16 +10,11 @@ public class MainLocks {
             Runnable task;
             String threadName = "Thread-"+i;
 
-            switch (i) {
-                case 0:
-                    task = r::m2; // Thread 0 esegue m2 (nessun controllo di interruzione)
-                    break;
-                case 4:
-                    task = r::m3; // Thread 4 usa tryLock con timeout da 3 secondi
-                    break;
-                default:
-                    task = r::m1; // Gli altri usano lockInterruptibly
-            }
+            task = switch(i){
+                case 0 -> r::m2; // Thread 0 esegue m2 (nessun controllo di interruzione)
+                case 1 -> r::m3; // Thread 4 usa tryLock con timeout da 3 secondi
+                default -> r::m1; // Gli altri usano lockInterruptibly
+            };
 
             threads[i] = new Thread(task, threadName);
             threads[i].start();

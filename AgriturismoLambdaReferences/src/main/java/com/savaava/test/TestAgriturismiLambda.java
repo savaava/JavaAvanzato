@@ -26,8 +26,8 @@ public class TestAgriturismiLambda {
 
         System.out.println(
                 "\nelenco dei comuni degli agriturismi: "+elencoAgriturismo.esporta(a -> a.getComuneAzienda())+
-                "\nelenco dei titolari degli agriturismi: "+elencoAgriturismo.esporta(a -> a.getTitolare())+
-                "\nelenco degli indirizzi degli agriturismi: "+elencoAgriturismo.esporta(a -> a.getIndirizzoAzienda())
+                "\nelenco dei titolari degli agriturismi: "+elencoAgriturismo.esporta(Agriturismo::getTitolare)+
+                "\nelenco degli indirizzi degli agriturismi: "+elencoAgriturismo.esporta(Agriturismo::getIndirizzoAzienda)
         );
 
 
@@ -52,7 +52,7 @@ public class TestAgriturismiLambda {
         System.out.println("Aggiornamento agriturismi di Pernottamento e Camping:"+elencoAgriturismo);
 
         ElencoAgriturismi e2 = elencoAgriturismo.filtra(a -> a.getComuneAzienda().equalsIgnoreCase("SORRENTO"));
-        Integer sommaPostiLetto = e2.somma(a -> a.getPostiLetto());
+        Integer sommaPostiLetto = e2.somma(Agriturismo::getPostiLetto);
         System.out.println("Agriturismi Gragnano"+e2+"Somma dei posti letto: "+sommaPostiLetto);
     }
 }

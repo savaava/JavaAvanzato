@@ -1,9 +1,6 @@
 package mystudentlist;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,39 +65,50 @@ public class StudenteDAOPostGres implements StudenteDAO {
     public Studente cerca(String matricola) throws Exception {
         Studente sOut = null;
 
-        try(
+        String query = "SELECT * FROM studente WHERE matricola = ?";
+
+        try (
                 Connection conn = DriverManager.getConnection(URL, USER, PASS);
-                Statement st = conn.createStatement();
-        ){
-            String query = String.format(
-                    "SELECT * FROM studente WHERE matricola='%s';",
-                    matricola
-            );
-            ResultSet rs = st.executeQuery(query);
+                PreparedStatement ps = conn.prepareStatement(query)
+        ) {
+            ps.setString(1, matricola);
 
-
-            if(rs.next())
-                sOut = new Studente(rs.getString("matricola"),rs.getString("nome"),rs.getString("cognome"));
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    sOut = new Studente(
+                            rs.getString("matricola"),
+                            rs.getString("nome"),
+                            rs.getString("cognome")
+                    );
+                }
+            }
         }
 
         return sOut;
     }
 
+
     @Override
     public List<Studente> elencaTutti() throws Exception {
         List<Studente> studentiOut = new ArrayList<>();
-        //Class.forName("org.postgresql.Driver");
-        try(
+
+        String query = "SELECT * FROM studente;";
+
+        try (
                 Connection conn = DriverManager.getConnection(URL, USER, PASS);
                 Statement st = conn.createStatement();
-        ){
-            String query = "SELECT * FROM studente;";
-            ResultSet rs = st.executeQuery(query);
-
-            while(rs.next())
-                studentiOut.add(new Studente(rs.getString("nome"),rs.getString("cognome"),rs.getString("matricola")));
+                ResultSet rs = st.executeQuery(query)
+        ) {
+            while (rs.next()) {
+                studentiOut.add(new Studente(
+                        rs.getString("nome"),
+                        rs.getString("cognome"),
+                        rs.getString("matricola")
+                ));
+            }
         }
 
         return studentiOut;
     }
+
 }

@@ -55,10 +55,6 @@ public abstract class NetworkConnection {
             try(Socket socket = isServer() ? new ServerSocket(port).accept() : new Socket(IP,port);
                 ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
                 ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-                /* non posso invertire oos e ois perchè altrimenti sia il client che il server aspettano
-                * l'inputStream e si bloccano
-                * Quindi si deve sempre mettere prima oos perchè entrambi invieranno i pck con un outputStream
-                * con gli header */
             ){
                 this.socket = socket;
                 this.oos = oos;
@@ -69,9 +65,11 @@ public abstract class NetworkConnection {
                     //onReceiver();
                     receiveCallback.accept(msg);
                 }
-            }catch (UnknownHostException ex){ ex.printStackTrace();
-            }catch(IOException | ClassNotFoundException ex){ ex.printStackTrace(); }
-
+            }catch (UnknownHostException ex){
+                ex.printStackTrace();
+            }catch(IOException | ClassNotFoundException ex){
+                ex.printStackTrace();
+            }
         }
     }
 }

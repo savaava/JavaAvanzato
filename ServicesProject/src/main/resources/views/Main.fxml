@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.servicesproject.controllers.MainController">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <VBox alignment="TOP_CENTER" spacing="10.0">
+               <children>
+                  <Label fx:id="titleLbl" text="Title" />
+                  <ProgressBar fx:id="progressBar" prefWidth="200.0" progress="0.0" />
+                  <Label fx:id="progressMessageLbl" text="progressMessage" />
+                  <Button fx:id="testBtn" mnemonicParsing="false" onAction="#onTestClicked" text="Test Service" />
+                  <Label text="Utenti" />
+                  <TableView fx:id="usersTable" prefWidth="500.0">
+                    <columns>
+                      <TableColumn fx:id="nameColumn" prefWidth="247.0" resizable="false" text="Name" />
+                      <TableColumn fx:id="ageColumn" minWidth="0.0" prefWidth="207.0" resizable="false" text="Age" />
+                    </columns>
+                  </TableView>
+               </children>
+            </VBox>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <VBox alignment="TOP_CENTER" spacing="10.0">
+               <children>
+                  <Circle fx:id="circle" fill="DODGERBLUE" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Button fx:id="circleBtn" mnemonicParsing="false" onAction="#onCircleAction" text="Play Circle" />
+               </children>
+            </VBox>
+            <Label fx:id="orarioLbl" text="Orario" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
