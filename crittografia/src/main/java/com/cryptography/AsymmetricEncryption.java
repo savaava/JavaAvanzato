@@ -1,11 +1,11 @@
-package com;
+package com.cryptography;
 
 import javax.crypto.*;
 import java.security.*;
 
 public class AsymmetricEncryption implements AsymmetricEncryptionManager {
     private static final String ASYM_ALGORITHM = "RSA";
-    private static final Integer ASYM_KEY_SIZE = 2048;
+    private static final Integer ASYM_KEY_SIZE = 4096;
     private static final String CIPHER_TRANSFORMATION = ASYM_ALGORITHM+"/ECB/PKCS1Padding";
 
     private final KeyPairGenerator keyGenerator;

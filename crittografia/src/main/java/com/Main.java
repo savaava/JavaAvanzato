@@ -1,26 +1,54 @@
 package com;
 
-import java.nio.charset.StandardCharsets;
+import com.cryptography.AsymmetricEncryption;
+import com.cryptography.SymmetricEncryption;
+import com.packets.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        CifraturaAsimmetrica cifraturaAsimmetrica1 = new CifraturaAsimmetrica();
-        CifraturaAsimmetrica cifraturaAsimmetrica2 = new CifraturaAsimmetrica();
-
-        cifraturaAsimmetrica1.setInterlocutorPublicKey(cifraturaAsimmetrica2.getPublicKey());
-        byte[] bytesToSendTo2 = cifraturaAsimmetrica1.encrypt(StringByteConverter.stringToByte("msg da cifrare"));
-        System.out.println(
-                StringByteConverter.byteToString(cifraturaAsimmetrica2.decrypt(bytesToSendTo2))
+        AsymmetricEncryption savaAsymmetric = new AsymmetricEncryption();
+        SymmetricEncryption savaSymmetric = new SymmetricEncryption();
+        EncryptedPacketHandler sava = new EncryptedPacketHandler(
+                savaAsymmetric,
+                savaSymmetric
         );
-    }
 
-    private static class StringByteConverter {
-        private static byte[] stringToByte(String str) {
-            return str.getBytes(StandardCharsets.UTF_8);
-        }
+        AsymmetricEncryption gisoAsymmetric = new AsymmetricEncryption();
+        SymmetricEncryption gisoSymmetric = new SymmetricEncryption();
+        EncryptedPacketHandler giso = new EncryptedPacketHandler(
+                gisoAsymmetric,
+                gisoSymmetric
+        );
 
-        private static String byteToString(byte[] bytes) {
-            return new String(bytes, StandardCharsets.UTF_8);
-        }
+        gisoAsymmetric.setInterlocutorPublicKey(savaAsymmetric.getPublicKey());
+        savaAsymmetric.setInterlocutorPublicKey(gisoAsymmetric.getPublicKey());
+
+        /* sava invia a giso la chiave per la cifratura simmetrica usando la cifratura asimmetrica */
+        savaSymmetric.generateNewSecretKey();
+        EncryptedHandshakePacket savaPck = sava.createEncryptedHandshakePacket(
+                new HandshakePacket(savaSymmetric.getSenderKey())
+        );
+
+        gisoSymmetric.generateNewSecretKey();
+        EncryptedHandshakePacket gisoPck = giso.createEncryptedHandshakePacket(
+                new HandshakePacket(gisoSymmetric.getSenderKey())
+        );
+
+        /* Invio degli encryptedHandshakePacket tramite Networking */
+        gisoSymmetric.setInterlocutorKey(
+                giso.readEncryptedHandshakePacket(savaPck).getSymmetricKey()
+        );
+
+        savaSymmetric.setInterlocutorKey(
+                sava.readEncryptedHandshakePacket(gisoPck).getSymmetricKey()
+        );
+
+        /* Scambio di un msg sava -> giso */
+        DataPacket savaDataPacket = new DataPacket("Sono sava ciao!", "Devi sapere che questo è il contenuto del msg");
+        EncryptedDataPacket savaEncryptedDataPacket = sava.createEncryptedDataPacket(savaDataPacket);
+
+        /* Invio del msg a giso tramite Networking */
+        DataPacket pckToGiso = giso.readEncryptedDataPacket(savaEncryptedDataPacket);
+        System.out.println(pckToGiso);
     }
 }
