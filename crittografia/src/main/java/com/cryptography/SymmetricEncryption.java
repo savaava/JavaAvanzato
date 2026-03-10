@@ -24,7 +24,7 @@ import javax.security.auth.DestroyFailedException;
 public class SymmetricEncryption implements EncryptionManager {
     private static final String SYM_ALGORITHM = "AES";
     private static final Integer SYM_KEY_SIZE = 256;
-    private static final String CIPHER_TRANSFORMATION = "AES/GCM/NoPadding";
+    private static final String CIPHER_TRANSFORMATION = SYM_ALGORITHM+"/GCM/NoPadding";
 
     private final KeyGenerator keyGenerator;
     private SecretKey senderSymmetricKey;
