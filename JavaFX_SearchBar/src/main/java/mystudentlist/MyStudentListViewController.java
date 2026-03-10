@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mystudentlist;
 
 import java.io.BufferedWriter;
@@ -32,10 +27,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.FileChooser;
 
-/**
- *
- * @author lucagreco
- */
 public class MyStudentListViewController implements Initializable {
     @FXML
     private MenuItem saveButton;
@@ -68,9 +59,9 @@ public class MyStudentListViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         handleCodeField();
         
-        nameClm.setCellValueFactory(new PropertyValueFactory("nome"));
-        surnameClm.setCellValueFactory(new PropertyValueFactory("cognome"));
-        codeClm.setCellValueFactory(new PropertyValueFactory("matricola"));
+        nameClm.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        surnameClm.setCellValueFactory(new PropertyValueFactory<>("cognome"));
+        codeClm.setCellValueFactory(new PropertyValueFactory<>("matricola"));
         
         nameClm.setCellFactory(TextFieldTableCell.forTableColumn());
 
@@ -134,72 +125,41 @@ public class MyStudentListViewController implements Initializable {
 
     @FXML
     private void saveFile(ActionEvent event) {
-        
         FileChooser fc = new FileChooser();
-        
         File file = fc.showSaveDialog(nameField.getParent().getScene().getWindow());
         
         if(file != null) {
-        
             try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file)))) {
-            
-            
                 for(Studente s : studenti) {
-                    
-                    pw.append(s.getNome() + ';');
-                    pw.append(s.getCognome() + ';');
-                    pw.append(s.getMatricola() + '\n');
-                    
-                    
-                
-                
+                    pw.append(s.getNome()).append(String.valueOf(';'));
+                    pw.append(s.getCognome()).append(String.valueOf(';'));
+                    pw.append(s.getMatricola()).append(String.valueOf('\n'));
                 }
-                
-            
-            
             } catch (IOException ex) {
                 Logger.getLogger(MyStudentListViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
-        
-        
-        } 
-        
-        
-        
-       
+        }
     }
 
     @FXML
     private void quitApp(ActionEvent event) {
-        
         Platform.exit();
     }
 
     @FXML
     private void addStudent(ActionEvent event) {
-        
         studenti.add(new Studente(nameField.getText(), surnameField.getText(),codeField.getText()));
     }
 
     @FXML
     private void removeStudent(ActionEvent event) {
-        
         Studente s = studentTable.getSelectionModel().getSelectedItem();
-        
         studenti.remove(s);
-        
-        
     }
 
     @FXML
     private void updateName(TableColumn.CellEditEvent<Studente, String> event) {
-        
         Studente s = studentTable.getSelectionModel().getSelectedItem();
-        
         s.setNome(event.getNewValue());
-        
-        
     }
-    
 }
